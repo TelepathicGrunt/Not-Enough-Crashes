@@ -15,13 +15,13 @@ public class MixinHandler {
         DynamicRegistryManager dynamicRegistries = chunkRegion.getRegistryManager();
 
         String structureName = structureFeature.getName();
-        Identifier structureID = dynamicRegistries.get(Registry.STRUCTURE_FEATURE_KEY).getId(structureFeature);
+        Identifier structureID =  Registry.STRUCTURE_FEATURE.getId(structureFeature);
         Identifier biomeID = dynamicRegistries.get(Registry.BIOME_KEY).getId(biome);
 
         // Add extra info to the crash report file.
         // Note, only structures can do the details part as configuredfeatures always says the ConfiguredFeature class.
         crashreport.getSystemDetailsSection()
-                .add("\n****************** Blame Report ******************",
+                .add("\n****************** NotEnoughCrashes Report ******************",
                         "\n\n Structure Name : " + (structureName != null ? structureName : "Someone set the structure's name to null which is... very bad.") +
                                 "\n Structure Registry Name : " + (structureID != null ? structureID : "Structure is not registered somehow. Yell at the mod author when found to register their structures!") +
                                 "\n Structure Details : " + structureFeature.toString() +
